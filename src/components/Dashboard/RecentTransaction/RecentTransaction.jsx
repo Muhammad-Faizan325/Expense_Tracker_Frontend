@@ -14,7 +14,7 @@ const RecentTransactions = ({ transactions, onSeeMore }) => {
         </h5>
 
         <button
-          className="flex items-center gap-1 text-sm font-medium text-purple-600 hover:text-purple-700 transition-colors group"
+          className="flex items-center gap-1 text-sm font-medium text-emerald-600 hover:text-emerald-800 transition-colors group"
           onClick={onSeeMore}
         >
           See All

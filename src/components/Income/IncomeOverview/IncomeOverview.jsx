@@ -36,7 +36,7 @@ const IncomeOverview = ({ transactions, onAddIncome, onDownload, isDownloading }
 
           {/* Add Income Button */}
           <button 
-            className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-purple-600 rounded-lg hover:bg-purple-700 transition-shadow shadow-sm"
+            className="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-emerald-600 rounded-lg hover:bg-emerald-800 transition-shadow shadow-sm"
             onClick={onAddIncome}
           >
             <LuPlus size={18} />

@@ -2,11 +2,10 @@ import React from "react";
 import CustomPieChart from "../../charts/CustomPieChart";
 import { addThousandsSeparator } from "../../../utils/helper";
 
-// Colors ko segments ke mutabiq set karein: Income (Purple), Expense (Red), Balance (Orange)
 const COLORS = ["#875CF5", "#FA2C37", "#FF6900"];
 
 const FinanceOverview = ({ totalBalance, totalIncome, totalExpense }) => {
-  // Data array jo CustomPieChart ko pass hoga
+
   const balanceData = [
     { name: "Income", value: Number(totalIncome) || 0 },
     { name: "Expenses", value: Number(totalExpense) || 0 },
@@ -23,14 +22,13 @@ const FinanceOverview = ({ totalBalance, totalIncome, totalExpense }) => {
         <CustomPieChart
           data={balanceData}
           label="Total Balance"
-          // Helper function use karein formatting ke liye
-          totalAmount={`$${addThousandsSeparator(totalBalance || 0)}`} 
+
+          totalAmount={`$${addThousandsSeparator(totalBalance || 0)}`}
           colors={COLORS}
           showTextAnchor={true}
         />
       </div>
 
-      {/* Optional: Legend niche dikhane ke liye taake user ko pata chale kaunsa rang kya hai */}
       <div className="flex justify-center gap-4 mt-4">
         {balanceData.map((item, index) => (
           <div key={index} className="flex items-center gap-2">

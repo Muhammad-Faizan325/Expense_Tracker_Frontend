@@ -4,7 +4,7 @@ import { LuTrendingUpDown } from "react-icons/lu";
 
 const AuthLayout = ({ children }) => {
   return (
-    <div className='flex max-h-screen bg-white overflow-hidden'>
+    <div className='flex min-hscreen bg-white overflow-hidden'>
 
       <div className='w-full lg:w-[55vw] px-6 sm:px-12 lg:px-20 flex flex-col'>
 

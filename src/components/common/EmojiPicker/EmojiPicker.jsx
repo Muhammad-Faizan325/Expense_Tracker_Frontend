@@ -1,49 +1,66 @@
 import React, { useState } from "react";
 import EmojiPicker from "emoji-picker-react";
-import { LuImage, LuX } from "react-icons/lu";
+import { LuSmile, LuX } from "react-icons/lu";
 
 const EmojiPickerPopup = ({ icon, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    // ✅ 'w-full flex justify-start' add kiya taake ye hamesha left se shuru ho
-    <div className="relative mb-4 w-full flex justify-start">
-      <div 
-        className="flex items-center gap-3 cursor-pointer group" 
+    <div className="relative w-full flex flex-col items-start">
+      {/* The main button wrapper: 'items-center' fixes the vertical alignment */}
+      <div
+        className="flex items-center gap-4 cursor-pointer group h-16"
         onClick={() => setIsOpen(true)}
       >
-        <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-slate-50 border border-slate-200 rounded-xl group-hover:bg-purple-50 group-hover:border-purple-200 transition-all">
+        {/* Icon Box */}
+        <div className="w-14 h-14 flex-shrink-0 flex items-center justify-center bg-white border-2 border-slate-100 rounded-2xl group-hover:border-emerald-500 group-hover:bg-emerald-50/30 transition-all duration-300 shadow-sm">
           {icon ? (
-            <span className="text-2xl">{icon}</span>
+            <span className="text-3xl">{icon}</span>
           ) : (
-            <LuImage className="text-slate-400 group-hover:text-purple-500" size={24} />
+            <LuSmile className="text-slate-300 group-hover:text-emerald-500" size={28} />
           )}
         </div>
-        
-        {/* ✅ text-left ensure karta hai ke label left par hi rahe */}
-        <p className="text-sm font-medium text-slate-500 group-hover:text-purple-600 transition-colors text-left">
-          {icon ? "Change Icon" : "Pick Icon"}
-        </p>
+
+        {/* Text Wrapper: 'justify-center' inside 'flex-col' keeps text centered with icon height */}
+        <div className="flex flex-col justify-center h-full">
+          <p className="text-sm font-bold text-slate-700 group-hover:text-emerald-600 transition-colors leading-tight">
+            {icon ? "Change Icon" : "Select Icon"}
+          </p>
+          <p className="text-[11px] text-slate-400 font-medium leading-tight mt-1">
+            Make your category recognizable
+          </p>
+        </div>
       </div>
 
       {isOpen && (
-        // ✅ left-0 taake popup bhi left side se hi khule
-        <div className="absolute left-0 z-[60] mt-14 shadow-2xl rounded-2xl overflow-hidden border border-slate-100 bg-white">
-           <div className="bg-white p-2 flex justify-end border-b">
-              <button onClick={(e) => {
-                e.stopPropagation(); // Parent click prevent karne ke liye
-                setIsOpen(false);
-              }} className="text-slate-400 hover:text-slate-600">
-                <LuX size={18}/>
+        <>
+          <div className="fixed inset-0 z-[55]" onClick={() => setIsOpen(false)} />
+
+          <div className="absolute left-0 top-20 z-[60] shadow-2xl rounded-[24px] overflow-hidden border border-emerald-100 bg-white animate-in fade-in slide-in-from-top-2 duration-200">
+            <div className="bg-emerald-50/50 px-4 py-3 flex justify-between items-center border-b border-emerald-100">
+              <span className="text-[10px] font-black text-emerald-800 uppercase tracking-widest">Visual Identity</span>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsOpen(false);
+                }}
+                className="p-1 rounded-full hover:bg-white text-emerald-600 transition-colors"
+              >
+                <LuX size={16} />
               </button>
-           </div>
-           <EmojiPicker 
-             onEmojiClick={(emojiData) => {
-               onSelect(emojiData.emoji);
-               setIsOpen(false);
-             }} 
-           />
-        </div>
+            </div>
+            <EmojiPicker
+              onEmojiClick={(emojiData) => {
+                onSelect(emojiData.emoji);
+                setIsOpen(false);
+              }}
+              height={400}
+              width={320}
+              previewConfig={{ showPreview: false }}
+              skinTonesDisabled
+            />
+          </div>
+        </>
       )}
     </div>
   );

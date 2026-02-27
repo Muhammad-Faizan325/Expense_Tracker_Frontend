@@ -21,8 +21,8 @@ const ExpenseTransactions = ({ transactions, onSeeMore }) => {
         </h5>
 
         <button
+          className="flex items-center gap-1 text-sm font-medium text-emerald-600 hover:text-emerald-800 transition-colors group"
           onClick={onSeeMore}
-          className="flex items-center gap-2 text-sm font-semibold text-slate-500 hover:text-slate-800 transition-colors group"
         >
           See All
           <LuArrowRight className="text-base group-hover:translate-x-1 transition-transform" />

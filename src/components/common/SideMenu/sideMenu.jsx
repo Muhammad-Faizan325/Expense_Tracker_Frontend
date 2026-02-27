@@ -54,8 +54,8 @@ const SideMenu = ({ activeMenu, closeMobileMenu }) => {
                             onClick={() => handleNavigation(item.path)} // handleNavigation use kiya yahan
                             className={`w-full flex items-center gap-4 px-6 py-3 rounded-lg text-[15px] transition-all
                                 ${isActive 
-                                    ? "bg-purple-600 text-white shadow-md shadow-purple-100" 
-                                    : "text-slate-500 hover:bg-purple-50 hover:text-purple-600"}`}
+                                    ? "bg-emerald-600 text-white shadow-md shadow-emerald-100" 
+                                    : "text-slate-500 hover:bg-emerald-50 hover:text-emerald-600"}`}
                         >
                             <item.icon size={20} />
                             {activeMenu && <span className="font-medium">{item.label}</span>}

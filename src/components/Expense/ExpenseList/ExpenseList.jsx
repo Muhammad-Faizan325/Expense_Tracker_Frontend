@@ -3,10 +3,10 @@ import { LuDownload, LuChevronDown, LuEye } from 'react-icons/lu';
 import TransactioInfoCard from '../../common/cards/TransactioInfoCard';
 import moment from 'moment';
 
-const ExpenseList = ({ transactions, onDelete, onEdit, onDownload }) => { // ✅ Added onEdit prop
+const ExpenseList = ({ transactions, onDelete, onEdit, onDownload }) => {
   const [displayCount, setDisplayCount] = useState(6);
 
-  // Array check: Safe mapping handle karne ke liye
+
   const safeTransactions = Array.isArray(transactions) ? transactions : [];
   const visibleTransactions = safeTransactions.slice(0, displayCount);
 
@@ -18,10 +18,10 @@ const ExpenseList = ({ transactions, onDelete, onEdit, onDownload }) => { // ✅
     <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-sm">
       <div className="flex items-center justify-between mb-6">
         <h5 className="text-lg font-bold text-slate-800">Expense Logs</h5>
-        
+
         <div className="flex items-center gap-3">
           {safeTransactions.length > displayCount && (
-            <button 
+            <button
               onClick={handleSeeMore}
               className="flex items-center gap-2 text-xs font-bold text-slate-500 bg-slate-50 px-3 py-2 rounded-xl hover:bg-slate-100 transition-all border border-slate-100"
             >
@@ -30,7 +30,7 @@ const ExpenseList = ({ transactions, onDelete, onEdit, onDownload }) => { // ✅
             </button>
           )}
 
-          <button 
+          <button
             onClick={onDownload}
             className="flex items-center gap-2 text-sm font-semibold text-purple-600 bg-purple-50 px-4 py-2 rounded-xl hover:bg-purple-100 transition-all"
           >
@@ -51,8 +51,8 @@ const ExpenseList = ({ transactions, onDelete, onEdit, onDownload }) => { // ✅
               amount={expense.amount}
               type="expense"
               handleDeletebtn={() => onDelete(expense._id)}
-              // ✅ Connect pencil icon to the onEdit function
-              handleEditbtn={() => onEdit(expense)} 
+
+              handleEditbtn={() => onEdit(expense)}
             />
           ))
         ) : (

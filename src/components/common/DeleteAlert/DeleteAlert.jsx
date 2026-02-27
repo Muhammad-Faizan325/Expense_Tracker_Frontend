@@ -12,12 +12,12 @@ const DeleteAlert = ({ isOpen, onClose, onConfirm, title, message }) => {
         
         {/* Header with Purple Warning Icon */}
         <div className="flex items-start justify-between p-6 pb-2">
-          <div className="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center text-purple-600 flex-shrink-0 border border-purple-100">
+          <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600 flex-shrink-0 border border-emerald-100">
             < LucideAlertCircle size={24} />
           </div>
           <button 
             onClick={onClose}
-            className="p-2 text-slate-400 hover:bg-purple-50 hover:text-purple-600 rounded-lg transition-colors"
+            className="p-2 text-slate-400 hover:bg-emerald-50 hover:text-emerald-600 rounded-lg transition-colors"
           >
             <LuX size={20} />
           </button>
@@ -43,7 +43,7 @@ const DeleteAlert = ({ isOpen, onClose, onConfirm, title, message }) => {
           </button>
           <button
             onClick={onConfirm}
-            className="flex-1 px-4 py-2.5 text-sm font-bold text-white bg-purple-600 rounded-xl hover:bg-purple-700 transition-all shadow-md shadow-purple-200 flex items-center justify-center gap-2 active:scale-95"
+            className="flex-1 px-4 py-2.5 text-sm font-bold text-white bg-emerald-600 rounded-xl hover:bg-emerald-800 transition-all shadow-md shadow-emerald-200 flex items-center justify-center gap-2 active:scale-95"
           >
             <LuTrash2 size={18} />
             Delete Now

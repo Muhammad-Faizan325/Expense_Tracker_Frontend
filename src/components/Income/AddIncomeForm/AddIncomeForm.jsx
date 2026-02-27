@@ -1,70 +1,70 @@
 import React, { useState } from "react";
-import Input from "../../Inputs/input"; 
+import Input from "../../Inputs/input";
 import EmojiPickerPopup from "../../common/EmojiPicker/EmojiPicker";
 
-const AddExpenseForm = ({ onAddExpense, editData }) => {
-  const [expense, setExpense] = useState({
-    category: editData?.category || "",
+const AddIncomeForm = ({ onAddIncome, editData }) => {
+  // Renamed state and keys to look distinct from the Expense form
+  const [incomeData, setIncomeData] = useState({
+    source: editData?.source || "",
     amount: editData?.amount || "",
     date: editData?.date ? new Date(editData.date).toISOString().split('T')[0] : "",
-    icon: editData?.icon || "",
+    icon: editData?.icon || "💰", // Default icon for income
   });
 
-  const handleChange = (key, value) => {
-    setExpense({ ...expense, [key]: value });
+  const handleUpdate = (field, val) => {
+    setIncomeData({ ...incomeData, [field]: val });
   };
 
   return (
-    <div className="space-y-5">
-      {/* Icon Picker Section - Left Aligned Wrapper */}
+    <div className="space-y-6">
+      {/* Icon Selector with Vantage Styling */}
       <div className="flex flex-col items-start w-full">
-        <label className="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-3 ml-1">
-          Select Icon
+        <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.15em] mb-4 ml-1">
+          Revenue Source Icon
         </label>
-        
-        {/* Is div ko width-fit di hai taake ye poori line na ghaire aur left par hi rahe */}
-        <div className="flex justify-start items-center w-fit">
-          <EmojiPickerPopup 
-            icon={expense.icon} 
-            onSelect={(selectedIcon) => handleChange("icon", selectedIcon)} 
+
+        <div className="flex justify-start items-center w-fit p-1 bg-emerald-50/50 rounded-2xl border border-emerald-100/50">
+          <EmojiPickerPopup
+            icon={incomeData.icon}
+            onSelect={(selected) => handleUpdate("icon", selected)}
           />
         </div>
       </div>
 
       <Input
-        label="Expense Category"
-        placeholder="Bills, Rent, Food, etc"
+        label="Income Source"
+        placeholder="Salary, Freelance, Dividends..."
         type="text"
-        value={expense.category}
-        onChange={({ target }) => handleChange("category", target.value)}
+        value={incomeData.source}
+        onChange={({ target }) => handleUpdate("source", target.value)}
       />
 
       <Input
-        label="Amount"
+        label="Amount Received"
         placeholder="0.00"
         type="number"
-        value={expense.amount}
-        onChange={({ target }) => handleChange("amount", target.value)}
+        value={incomeData.amount}
+        onChange={({ target }) => handleUpdate("amount", target.value)}
       />
 
       <Input
-        label="Date"
+        label="Credit Date"
         type="date"
-        value={expense.date}
-        onChange={({ target }) => handleChange("date", target.value)}
+        value={incomeData.date}
+        onChange={({ target }) => handleUpdate("date", target.value)}
       />
 
-      <div className="flex justify-end pt-4">
+      <div className="flex justify-end pt-6">
         <button
           type="button"
-          className="bg-purple-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-purple-700 shadow-lg shadow-purple-200 active:scale-95 transition-all w-full sm:w-auto"
-          onClick={() => onAddExpense(expense)}
+          className="bg-emerald-600 text-white px-10 py-4 rounded-2xl font-black text-sm uppercase tracking-wider hover:bg-emerald-700 shadow-xl shadow-emerald-200/50 active:scale-95 transition-all w-full sm:w-full"
+          onClick={() => onAddIncome(incomeData)}
         >
-          {editData ? "Update Expense" : "Add Expense"}
+          {editData ? "Confirm Changes" : "Add Income"}
         </button>
       </div>
     </div>
   );
 };
 
-export default AddExpenseForm;
+export default AddIncomeForm;

@@ -9,7 +9,7 @@ import RecentTransactions from "../../components/Dashboard/RecentTransaction/Rec
 import { useNavigate } from "react-router-dom";
 import FinanceOverview from "../../components/Dashboard/FinanceOverview/FinanceOverview";
 import ExpenseTransactions from "../../components/Dashboard/ExpenseTransactions/ExpenseTransactions";
-import Last30DaysExpenses from "../../components/Dashboard/last30DaysRxpense/last30DaysExpense";
+import Last30DaysExpenses from "../../components/Dashboard/last30DaysExpense/last30DaysExpense";
 import RecentIncomeWithChart from "../../components/Dashboard/RecentIncomeWithChart/RecentIncomeWithChart";
 import RecentIncome from "../../components/Dashboard/RecentIncome/RecentIncome";
 
@@ -17,14 +17,13 @@ function Home() {
   const dispatch = useDispatch();
   const { stats, isLoading } = useSelector((state) => state.dashboard);
   const navigate = useNavigate();
-
+2
   useEffect(() => {
     dispatch(fetchDashboardStats());
   }, [dispatch]);
 
   const displayCards = useMemo(() => cardsData(stats), [stats]);
 
-  // Sirf Expense transactions filter karna
   const expenseTransactions = useMemo(() => {
     return stats?.recentTransactions?.expense || [];
   }, [stats]);
@@ -32,7 +31,7 @@ function Home() {
   return (
     <DashboardLayout activeMenu="dashboard">
       <div className="my-5 mx-2">
-        {/* Top Section: Stats Cards Grid */}
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           {!isLoading &&
             displayCards.map((card, index) => (
@@ -47,15 +46,12 @@ function Home() {
             ))}
         </div>
 
-        {/* Bottom Section: Side-by-Side Transactions & Chart */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Recent Transactions List (Left Side) */}
           <RecentTransactions
             transactions={expenseTransactions}
             onSeeMore={() => navigate("/expense")}
           />
 
-          {/* Financial Overview Pie Chart (Right Side) */}
           <FinanceOverview
             totalBalance={stats?.totalBalance || 0}
             totalIncome={stats?.totalIncome || 0}
@@ -74,9 +70,9 @@ function Home() {
             totalIncome={stats?.totalIncome || 0}
           />
           <RecentIncome
-    transactions={stats?.last60DaysIncome?.transactions || []} 
-    onSeeMore={() => navigate("/income")} 
-  />
+            transactions={stats?.last60DaysIncome?.transactions || []}
+            onSeeMore={() => navigate("/income")}
+          />
         </div>
       </div>
     </DashboardLayout>

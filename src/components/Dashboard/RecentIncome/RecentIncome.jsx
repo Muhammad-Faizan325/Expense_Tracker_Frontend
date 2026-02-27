@@ -9,11 +9,12 @@ const RecentIncome = ({ transactions, onSeeMore }) => {
       {/* Header Section */}
       <div className="flex items-center justify-between mb-6">
         <h5 className="text-lg font-bold text-slate-800">Recent Income</h5>
-        <button 
-          className="flex items-center gap-1 text-sm font-semibold text-purple-600 hover:text-purple-700 transition-colors"
+        <button
+          className="flex items-center gap-1 text-sm font-medium text-emerald-600 hover:text-emerald-800 transition-colors group"
           onClick={onSeeMore}
         >
-          See All <LuArrowRight size={16} />
+          See All
+          <LuArrowRight className="text-base group-hover:translate-x-1 transition-transform" />
         </button>
       </div>
 

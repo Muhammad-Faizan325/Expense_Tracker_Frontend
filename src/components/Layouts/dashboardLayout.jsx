@@ -4,17 +4,17 @@ import SideMenu from "../common/SideMenu/sideMenu";
 import useUser from "../../hooks/userAuth.hook";
 
 const DashboardLayout = ({ children }) => {
-  // 1. Default state ko screen size ke mutabiq set karo
+
   const [activeMenu, setActiveMenu] = useState(window.innerWidth > 1024);
   const { user, loading } = useUser();
 
-  // 2. Screen resize hone par state update karo (Mobile par auto-close)
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 1024) {
-        setActiveMenu(false); // Mobile par default band
+        setActiveMenu(false);
       } else {
-        setActiveMenu(true); // Desktop par default khula
+        setActiveMenu(true);
       }
     };
 
@@ -32,7 +32,7 @@ const DashboardLayout = ({ children }) => {
 
       <div className="flex flex-1 relative overflow-hidden">
         {user && (
-          <aside 
+          <aside
             className={`hidden lg:block border-r border-slate-100 bg-white transition-all duration-300 
             ${activeMenu ? "w-64" : "w-20"}`}
           >
