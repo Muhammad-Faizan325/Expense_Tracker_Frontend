@@ -16,10 +16,10 @@ const AddExpenseForm = ({ onAddExpense, editData }) => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="">
       {/* Icon Selector - Now left-aligned to match Income Form */}
       <div className="flex flex-col items-start w-full">
-        <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.15em] mb-4 ml-1">
+        <label className="text-[10px] font-black text-slate-400 uppercase tracking-[0.15em] ml-1">
           Expense Category Icon
         </label>
 
@@ -55,7 +55,7 @@ const AddExpenseForm = ({ onAddExpense, editData }) => {
       />
 
       {/* Action Button - Themed to Emerald Vantage Style */}
-      <div className="flex justify-end pt-6">
+      <div className="flex justify-end">
         <button
           type="button"
           className="bg-emerald-600 text-white px-10 py-4 rounded-2xl font-black text-sm uppercase tracking-wider hover:bg-emerald-700 shadow-xl shadow-emerald-200/50 active:scale-95 transition-all w-full sm:w-full"

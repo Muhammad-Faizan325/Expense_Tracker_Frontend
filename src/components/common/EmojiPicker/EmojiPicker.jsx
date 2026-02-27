@@ -6,16 +6,16 @@ const EmojiPickerPopup = ({ icon, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="relative w-full flex flex-col items-start">
+    <div className="relative w-full flex flex-col items-start pe-3">
       {/* The main button wrapper: 'items-center' fixes the vertical alignment */}
       <div
-        className="flex items-center gap-4 cursor-pointer group h-16"
+        className="flex items-center gap-4 cursor-pointer group h-10"
         onClick={() => setIsOpen(true)}
       >
         {/* Icon Box */}
-        <div className="w-14 h-14 flex-shrink-0 flex items-center justify-center bg-white border-2 border-slate-100 rounded-2xl group-hover:border-emerald-500 group-hover:bg-emerald-50/30 transition-all duration-300 shadow-sm">
+        <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-white border-2 border-slate-100 rounded-2xl group-hover:border-emerald-500 group-hover:bg-emerald-50/30 transition-all duration-300 shadow-sm">
           {icon ? (
-            <span className="text-3xl">{icon}</span>
+            <span className="text-xl">{icon}</span>
           ) : (
             <LuSmile className="text-slate-300 group-hover:text-emerald-500" size={28} />
           )}
